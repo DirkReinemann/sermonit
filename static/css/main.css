@@ -1,0 +1,9 @@
+.scroll { overflow: auto; min-height: 300px; height: 300px; }
+.legend table { border-spacing: 5px; border-collapse: separate; }
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus { background-color: transparent;  color: #999999; cursor: default; }
+.navbar-inverse a:hover { cursor: pointer; }
+
+.hoverbox { position: absolute; display: none; border: 1px solid #333333; padding: 5px; background-color: #f9f9f9; color: #333333; }
+
+.loading { display: block; margin: 35px auto; }

@@ -1,0 +1,158 @@
+{
+  "pages": [
+    {
+      "name": "Information",
+      "modules": [
+        {
+          "header": "Processor Information",
+          "name": "cpuinfo",
+          "ending": ".sh",
+          "template": "KeyValue"
+        },
+        {
+          "header": "Apache Information",
+          "name": "apacheinfo",
+          "ending": ".sh",
+          "template": "KeyValue"
+        },
+        {
+          "header": "Memory Information",
+          "name": "memoryinfo",
+          "ending": ".sh",
+          "template": "KeyValue"
+        },
+        {
+          "header": "Group Information",
+          "name": "groupinfo",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "User Information",
+          "name": "userinfo",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Apache Modules",
+          "name": "apachemodules",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Apache Virtual Hosts",
+          "name": "apachevirtualhosts",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Application Versions",
+          "name": "applicationversion",
+          "ending": ".sh",
+          "template": "KeyValue"
+        }
+      ]
+    },
+    {
+      "name": "Stats",
+      "modules": [
+        {
+          "header": "Memory Statistics",
+          "name": "memorystats",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Disk Information",
+          "name": "diskinfo",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Processor Intensive Applications",
+          "name": "cpuintensive",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Memory Intensive Applications",
+          "name": "memoryintensive",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Apache Request Statistic",
+          "name": "apacheaccess",
+          "ending": ".sh",
+          "template": "BarChart"
+        }
+      ]
+    },
+    {
+      "name": "Network",
+      "modules": [
+        {
+          "header": "Arp Cache",
+          "name": "arpcache",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Route Information",
+          "name": "routeinfo",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Internet Connections",
+          "name": "tcpconnections",
+          "ending": ".sh",
+          "template": "Table"
+        },
+        {
+          "header": "Network Interfaces",
+          "name": "interfacesinfo",
+          "ending": ".sh",
+          "template": "Table"
+        }
+      ]
+    },
+    {
+      "name": "Graphs",
+      "modules": [
+        {
+          "header": "Processor Temperature",
+          "name": "cputemp",
+          "ending": ".o",
+          "template": "Graph",
+          "max": 120,
+          "refresh": 1000
+        },
+        {
+          "header": "Processor Usage",
+          "name": "cpuusage",
+          "ending": ".o",
+          "template": "Graph",
+          "max": 100,
+          "refresh": 100
+        },
+        {
+          "header": "Memory Usage",
+          "name": "memoryusage",
+          "ending": ".o",
+          "template": "Graph",
+          "max": 100,
+          "refresh": 1000
+        },
+        {
+          "header": "Apache Requests",
+          "name": "apacherequests",
+          "ending": ".sh",
+          "template": "Graph",
+          "max": null,
+          "refresh": 1000
+        }
+      ]
+    }
+  ]
+}
