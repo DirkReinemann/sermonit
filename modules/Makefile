@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-g3 -std=c11 -Wall -Wextra -Werror -lm -D_GNU_SOURCE
+CFLAGS=-g3 -std=c11 -Wall -Wextra -Werror -D_GNU_SOURCE
 OBJECTS=cpuusage.o cputemp.o memoryusage.o
-LIBS=
+LIBS=-lm
 
 all: $(OBJECTS)
 
@@ -9,4 +9,4 @@ all: $(OBJECTS)
 	$(CC) $(CFLAGS) $< $(LIBS) -o $@
 
 clean:
-	rm *.o
+	-rm -f *.o

@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# applications: awk, echo, head, ps, sed, tr
+# dependencies: awk, echo, head, ps, sed, tr
 
 set -e
 set -o pipefail
 
-RESULT=$(ps -eo pcpu,pid,euser,egroup,etime,command --sort -pmem | head -11 \
-        | awk 'NR>1{ out=""; for(i=6;i<=NF;i++){ out=out" "$i }; sub(/^ /, "", out); gsub(/"/, "", out); print "{\"cpu\":\""$1"\",\"pid\":\""$2"\",\"uid\":\""$3"\",\"gid\":\""$4"\",\"time\":\""$5"\",\"command\":\""out"\"}" }' \
-        | tr '\n' ',' | sed 's/,$//')
+result=$(ps -eo pcpu,pid,euser,egroup,etime,command --sort -pmem | head -11 \
+    | awk 'NR>1{ out=""; for(i=6;i<=NF;i++){ out=out" "$i }; sub(/^ /, "", out); gsub(/"/, "", out); print "{\"cpu\":\""$1"\",\"pid\":\""$2"\",\"uid\":\""$3"\",\"gid\":\""$4"\",\"time\":\""$5"\",\"command\":\""out"\"}" }' \
+    | tr '\n' ',' | sed 's/,$//'
+)
 
-echo "[$RESULT]"
+echo "[$result]"
 
 exit 0

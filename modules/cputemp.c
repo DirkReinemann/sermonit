@@ -1,3 +1,5 @@
+// dependencies: /sys/class/thermal/thermal_zone[0-9]
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <dirent.h>
@@ -64,6 +66,7 @@ int main()
 
     read_stats(&stat);
     char result[1024];
+    result[0] = '\0';
     int len = 0;
     for (int i = 0; i < stat.length; i++) {
         char temp[64];
@@ -71,8 +74,12 @@ int main()
         strncpy(result + len, temp, l + 1);
         len += l;
     }
-    result[len - 1] = '\0';
-    printf("[%s]\n", result);
+    if (strlen(result) > 0) {
+        result[len - 1] = '\0';
+        printf("[%s]\n", result);
+    } else {
+        printf("[]\n");
+    }
     free(stat.temps);
     return 0;
 }

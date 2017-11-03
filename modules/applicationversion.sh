@@ -1,20 +1,27 @@
 #!/bin/bash
 
-# applications: echo, jq, sed, tr
+# dependencies: echo, jq, sed, tr
 
 set -e
 set -o pipefail
 
-WORKDIR=$(pwd)
-if [ -d "/usr/share/watchit" ]; then
-    WORKDIR="/usr/share/watchit"
+workdir=$(pwd)
+
+if [[ $workdir == *modules ]]; then
+    workdir=${workdir%/*}
 fi
 
-APPLICATIONSDIR="$WORKDIR/modules/applicationversion"
-CONFIGFILE="$WORKDIR/conf/modules/applicationversion.json"
+if [ -d "/usr/share/watchit" ]; then
+    workdir="/usr/share/watchit"
+fi
 
-RESULT=$(for A in $(cat $CONFIGFILE | jq .[] | sed 's/"//g'); do
-    echo "$(. $APPLICATIONSDIR/$A.sh)"
-done | tr '\n' ',' | sed 's/,$//')
+applicationsdir="$workdir/modules/applicationversion"
+configfile="$workdir/config/modules/applicationversion.json"
 
-echo "{$RESULT}"
+result=$(
+    for application in $(cat $configfile | jq .[] | sed 's/"//g'); do
+        echo "$(. $applicationsdir/$application.sh)"
+    done | tr '\n' ',' | sed 's/,$//'
+)
+
+echo "{$result}"

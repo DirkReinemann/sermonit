@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# applications: echo, grep, python
+# dependencies: echo, grep, python
 
 set -e
 set -o pipefail
 
-RESULT=$(python 2>&1 --version | grep -o [0-9.]*)
+result=$(python 2>&1 --version | grep -o [0-9.]*)
 
-echo "\"python\":\"$RESULT\""
+echo "\"python\":\"$result\""
 
 exit 0

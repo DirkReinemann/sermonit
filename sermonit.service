@@ -1,0 +1,10 @@
+[Unit]
+Description=sermonit server monitoring
+
+[Service]
+ExecStart=/usr/bin/sermonit
+User=sermonit
+Group=sermonit
+
+[Install]
+WantedBy=multi-user.target

@@ -1,3 +1,5 @@
+// dependencies: /proc/stat
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <regex.h>
@@ -66,6 +68,7 @@ int main()
     Stat stat1;
     Stat stat2;
 
+    result[0] = '\0';
     read_stats(&stat1);
     sleep(1);
     read_stats(&stat2);
@@ -80,8 +83,12 @@ int main()
         strncpy(result + len, temp, l + 1);
         len += l;
     }
-    result[len - 1] = '\0';
-    printf("[%s]\n", result);
+    if (strlen(result) > 0) {
+        result[len - 1] = '\0';
+        printf("[%s]\n", result);
+    } else {
+        printf("[]\n");
+    }
     free(stat1.cpus);
     free(stat2.cpus);
     return 0;

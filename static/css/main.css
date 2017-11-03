@@ -7,3 +7,5 @@
 .hoverbox { position: absolute; display: none; border: 1px solid #333333; padding: 5px; background-color: #f9f9f9; color: #333333; }
 
 .loading { display: block; margin: 35px auto; }
+
+.panel-body { padding: 15px !important; }

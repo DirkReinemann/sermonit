@@ -31,8 +31,11 @@ void set_module_data(struct mg_connection *connection, const char *name)
     n = 0;
 
     if (pipe != NULL) {
-        getline(&line, &n, pipe);
-        mg_printf_http_chunk(connection, line);
+        ssize_t read = getline(&line, &n, pipe);
+        if (read > 0)
+            mg_printf_http_chunk(connection, line);
+        else
+            set_error_response(connection);
         free(line);
         pclose(pipe);
     } else {
@@ -76,7 +79,7 @@ int main()
     connection = mg_bind(&mgr, port, request_handler);
     mg_set_protocol_http_websocket(connection);
     opts.document_root = ".";
-    printf("Starting serwatch on port %s\n...", port);
+    printf("Starting sermonit on port %s.\n", port);
 
     for (;; )
         mg_mgr_poll(&mgr, 1000);

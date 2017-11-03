@@ -2,7 +2,7 @@ var currentPage;
 
 $(document).ready(function () {
     $.ajax({
-        url: "config.json",
+        url: "config/config.json",
         success: function(configData) {
             initNavigation(configData);
             currentPage = configData["pages"][0]["name"];
