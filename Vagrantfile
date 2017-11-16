@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "archlinux/archlinux"
   config.vm.hostname = "vagrant"
   config.vm.network "forwarded_port", guest: 8000, host: 8000
 
@@ -13,10 +13,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "sermonit.zip", destination: "sermonit.zip"
 
   config.vm.provision "shell", inline: <<-SHELL
-     apt-get update
-     apt-get install -y apache2 unzip make gcc jq python scala openjdk-8-jre go rust perl ruby
-     unzip sermonit.zip
-     make install
-     make service
+    pacman -Sy
+    pacman -S --noconfirm apache unzip make gcc jq scala jdk8-openjdk perl ruby go rust bash-completion net-tools
+    unzip sermonit.zip
+    make install
+    make service
   SHELL
 end
