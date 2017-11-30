@@ -55,6 +55,15 @@ If you want to start sermonit as a systemd service on boot as a sermonit user yo
 make service
 ```
 
+To use the apache modules you have to check whether the user that is running the application (default sermonit) has access
+to the logfiles of apache (default /var/log/apache2) and can read the configuration file (default /etc/apache2/apache2.conf).
+
+If you want to execute a script as the default user you can do this with.
+
+```bash
+sudo -u sermonit bash -c '. /usr/share/sermonit/modules/apacheaccess.sh'
+```
+
 ## deinstallation
 
 The makefile can also be used to uninstall sermonit.

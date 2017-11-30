@@ -6,7 +6,7 @@ set -e
 set -o pipefail
 
 result=$(apachectl -t -D DUMP_VHOSTS | \
-    awk 'NR>1{ print "{\"name\":\""$1"\",\"domain\":\""$2"\",\"configuration\":\""$3"\"}" }' | \
+    awk '{ gsub(/\(/, "", $5); gsub(/\)/, "", $5); if ($2 ~ /^[0-9]+$/) print "{\"domain\":\""$4"\",\"port\":\""$2"\",\"configuration\":\""$5"\"}" }' | \
     tr '\n' ',' | \
     sed 's/,$//'
 )
