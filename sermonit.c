@@ -19,9 +19,9 @@ void set_error_response(struct mg_connection *connection)
 
 void set_module_data(struct mg_connection *connection, const char *name)
 {
-    FILE *pipe = NULL;
+    FILE *pipe;
+    char *file;
     char *line = NULL;
-    char *file = NULL;
     size_t n = 0;
 
     n = strlen(modulesdir) + strlen(name) + 4;
