@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g3 -std=c11 -Wall -Wextra -Werror -D_GNU_SOURCE -Wno-format-truncation
+CFLAGS=-g3 -std=c11 -Wall -Wextra -Werror -D_GNU_SOURCE -Wno-format-truncation -Wno-unused-function -DMG_ENABLE_BROADCAST -DMG_ENABLE_THREADS -lpthread
 SOURCES=sermonit.c mongoose.c
 BIN=sermonit
 

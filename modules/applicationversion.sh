@@ -18,13 +18,13 @@ fi
 applicationsdir="$workdir/modules/applicationversion"
 configfile="$workdir/config/modules/applicationversion.json"
 
-result=$(
-    for application in $(cat $configfile | jq .[] | sed 's/"//g'); do
+result="$(
+    for application in $(jq .[] "$configfile" | sed 's/"//g'); do
         content="$(. $applicationsdir/$application.sh)"
-        if [ ! -z $content ]; then
-            echo $content
+        if [ ! -z "$content" ]; then
+            echo "$content"
         fi
     done | tr '\n' ',' | sed 's/,$//'
-)
+)"
 
 echo "{$result}"
