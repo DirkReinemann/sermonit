@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 
 #include "mongoose.h"
 
@@ -37,6 +38,7 @@ static void set_default_header(struct mg_connection *connection)
 
 static void set_error_response(struct mg_connection *connection)
 {
+    mg_printf(connection, "%s", "HTTP/1.1 500 Internal Server Error\r\n\r\n");
     mg_printf_http_chunk(connection, "\r\n");
 }
 
@@ -52,11 +54,10 @@ static void on_work_complete(struct mg_connection *connection, int event, void *
                     set_error_response(connection);
                 }
                 else {
-                    set_default_header(connection);
+                    set_default_header(c);
+                    mg_printf_http_chunk(c, result->data);
+                    mg_send_http_chunk(c, "", 0);
                 }
-                printf("%s\n", result->data);
-                mg_printf_http_chunk(connection, result->data);
-                mg_send_http_chunk(connection, "", 0);
             }
         }
     }
@@ -96,7 +97,6 @@ void *worker_thread_proc(void *param) {
             pclose(pipe);
         }
         free(file);
-
         mg_broadcast(mgr, on_work_complete, (void *)&result, sizeof(result));
     }
     return NULL;
@@ -108,6 +108,8 @@ static void request_handler(struct mg_connection *connection, int event, void *d
 
     switch (event) {
         case MG_EV_ACCEPT:
+            if (next_id >= ULONG_MAX)
+                next_id = 0;
             connection->user_data = (void *)++next_id;
             break;
         case MG_EV_HTTP_REQUEST:
@@ -160,9 +162,9 @@ int main()
     }
 
     printf("Starting sermonit on port %s.\n", port);
+    while (received_signal == 0)
+        mg_mgr_poll(&mgr, 200);
 
-    for (;;)
-        mg_mgr_poll(&mgr, 1000);
 
     mg_mgr_free(&mgr);
     closesocket(sock[0]);

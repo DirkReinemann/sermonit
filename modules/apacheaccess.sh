@@ -5,7 +5,7 @@
 set -e
 set -o pipefail
 
-logdir=$(apachectl -S | grep 'Main ErrorLog' | awk -vFS=": " '{ print $2 }' | sed 's/"//g' | xargs dirname)
+logdir=$(apachectl -S 2>/dev/null | grep 'Main ErrorLog' | awk -vFS=": " '{ print $2 }' | sed 's/"//g' | xargs dirname)
 tmpdir="/tmp/apacheaccess"
 days=10
 
@@ -13,9 +13,12 @@ if [ -d $tmpdir ]; then
     rm -rf $tmpdir
 fi
 
-mkdir -p $tmpdir
-
-cp -r $logdir/* $tmpdir
+if [ -d $logdir ] && [ $(ls -1 $logdir | wc -l) -gt 0 ]; then
+    cp -r $logdir $tmpdir
+else
+    echo "[]"
+    exit 0
+fi
 
 cd $tmpdir
 
@@ -30,7 +33,6 @@ result=$(
     for log in $(grep -Eho '[0-9]{2}/[A-Za-z]{3}/[0-9]{4}' * | sort | uniq -c | tail -$days); do
         day=$(echo "$log" | awk '{ print $2 }')
         sum=$(echo "$log" | awk '{ print $1 }')
-        
         day=$(echo "$day" | sed 's,/, ,g')
         day=$(date -d "$day" +%Y-%m-%d)
         echo "$day $sum"
