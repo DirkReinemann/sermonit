@@ -3,7 +3,7 @@
 
 #include "mongoose.h"
 
-const char *port = "127.0.0.1:8000";
+const char *port = "0.0.0.0:8000";
 const char *modulesdir = "modules";
 struct mg_serve_http_opts opts;
 

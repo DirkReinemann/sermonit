@@ -1,13 +1,13 @@
 #!/bin/bash
 
 workdir="$(pwd)"
-if [ -d "/usr/share/watchit" ]; then
-    workdir="/usr/share/watchit"
+if [ -d "/usr/share/sermonit" ]; then
+    workdir="/usr/share/sermonit"
 fi
 
 logfile="$workdir/modules.log"
-if [ -d "/var/log/watchit" ]; then
-    logfile="/var/log/watchit/modules.log"
+if [ -d "/var/log/sermonit" ]; then
+    logfile="/var/log/sermonit/modules.log"
 fi
 
 modulesdir="$workdir/modules"

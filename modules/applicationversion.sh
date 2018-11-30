@@ -5,10 +5,10 @@
 set -e
 set -o pipefail
 
-workdir=$(pwd)
+workdir="$(pwd)"
 
 if [[ $workdir == *modules ]]; then
-    workdir=${workdir%/*}
+    workdir="${workdir%/*}"
 fi
 
 if [ -d "/usr/share/watchit" ]; then
@@ -20,9 +20,9 @@ configfile="$workdir/config/modules/applicationversion.json"
 
 result=$(
     for application in $(cat $configfile | jq .[] | sed 's/"//g'); do
-        content="$(. $applicationsdir/$application.sh)"
-        if [ ! -z $content ]; then
-            echo $content
+        content="$(. $applicationsdir/${application}.sh)"
+        if [ ! -z "$content" ]; then
+            echo "$content"
         fi
     done | tr '\n' ',' | sed 's/,$//'
 )

@@ -36,7 +36,7 @@ install: compile mods
 	-cp modules/*.sh /usr/share/sermonit/modules
 	-cp modules/*.o /usr/share/sermonit/modules
 
-service:
+service: install
 	-useradd -r -s /usr/bin/nologin -U sermonit
 	-chown -R sermonit:sermonit /usr/share/sermonit
 	-cp sermonit.service /etc/systemd/system
@@ -53,3 +53,17 @@ unservice:
 	-systemctl stop sermonit.service
 	-systemctl disable sermonit.service
 	-rm -f /etc/systemd/system/sermonit.service
+
+docker-build:
+	-sudo docker build -t sermonit:jessie .
+
+docker-run:
+	-sudo docker run --name sermonitvm -d sermonit:jessie
+	-$(shell echo "sudo docker inspect sermonitvm | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'")
+
+docker-stop:
+	-sudo docker container stop sermonitvm
+	-sudo docker container rm sermonitvm
+
+docker-ssh:
+	-$(shell sudo docker inspect sermonitvm | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress' | xargs -I'{}' printf "sshpass -p root ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@%s\n" "{}")
