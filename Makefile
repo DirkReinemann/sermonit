@@ -53,3 +53,12 @@ unservice:
 	-systemctl stop sermonit.service
 	-systemctl disable sermonit.service
 	-rm -f /etc/systemd/system/sermonit.service
+
+hash-create:
+	-rm sermonit.shasum sermonit.md5sum
+	-find . -type f | grep -v 'git' | xargs -I'{}' shasum '{}' | tee sermonit.shasum
+	-find . -type f | grep -v 'git' | xargs -I'{}' md5sum '{}' | tee sermonit.md5sum
+
+hash-check:
+	-shasum -c sermonit.shasum
+	-md5sum -c sermonit.md5sum
