@@ -1,4 +1,5 @@
 d4025c8cbe6a57faebda9fe6ea19d7a7  ./sermonit.c
+45b7576660ced1e6ded8d6d2c1fe1003  ./control
 cb64717344e67babc00600f68216654d  ./sermonit.bin
 02e4d3a6ef260c51ecabc2eab56ec615  ./Vagrantfile
 ab8d3d88042aba9b85ba6ce30926bb43  ./config/config.json
@@ -20,7 +21,6 @@ f4769f9bdb7466be65088239c12046d1  ./static/fonts/glyphicons-halflings-regular.eo
 c71b7aab700c76241a400af428a5d28e  ./static/img/loading.svg
 1cdd987427efbe6ccdff712d30b6438a  ./mongoose.c
 95a0210c2645f44d1d489e176eefc70b  ./sermonit
-57e155332b7d995153951fa88ada9531  ./sermonit.shasum
 a1f7be812a0048a634ca6f7d52b6ec00  ./LICENSE
 5e7c87ef769b600b0fc2665ab17567be  ./sermonit.service
 0cdfa91104c193a279b895b057d2aeb4  ./sermonit.sh
@@ -58,5 +58,5 @@ dd351de133a0c12e843355decf2ca1a9  ./modules/memoryinfo.sh
 b84ca7449bce6a40745cded498f59b94  ./modules/memorystats.sh
 444d622d9fc238e004aad9f45f6b8e0f  ./mongoose.h
 e9eef42de05f00d4388d12eb40f2557d  ./README.md
-68a3c99481d72792deb196e195318668  ./Makefile
+a3f1b3115ea2ede2ce3f3ff932bf5888  ./Makefile
 4e300b6e2927744818763b5cd85190d3  ./index.html

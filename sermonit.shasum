@@ -1,4 +1,5 @@
 b8c30fd5bf47f48a3898faceab5c73c46d03d517  ./sermonit.c
+06d110e152a8c2c23ecf9ab1a370a8f9a5e166ba  ./control
 fdc042269a8acaaad6609cccbc6d6a9d65586496  ./sermonit.bin
 a8a06907fc928166505922b273f8c80cd0c03038  ./Vagrantfile
 e34fcdf363f4c57d5ae97b88f0e6559f04b7446e  ./config/config.json
@@ -57,5 +58,5 @@ b20bd3417d83dc8b39aeb9e356f4d7ddc57b6d88  ./modules/Makefile
 b871fa88999926c0c40a0d705f08259bc4fa8cd9  ./modules/memorystats.sh
 321f84d6bdea522b5b43769aab87043d4b6e8621  ./mongoose.h
 bccf851eeeefa3f245cf9ddf37e0ec3d1745acd5  ./README.md
-9637510b8c782f5d0f0c43c550f882f33f7424be  ./Makefile
+b38b80bd416afe9bf9dd36d19f60d70185e3bc07  ./Makefile
 88ee549420a46a2bf39003fd009f74fd7910ce87  ./index.html

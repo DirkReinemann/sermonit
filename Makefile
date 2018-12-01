@@ -36,7 +36,7 @@ install: compile mods
 	-cp modules/*.sh /usr/share/sermonit/modules
 	-cp modules/*.o /usr/share/sermonit/modules
 
-service:
+service: install
 	-useradd -r -s /usr/bin/nologin -U sermonit
 	-chown -R sermonit:sermonit /usr/share/sermonit
 	-cp sermonit.service /etc/systemd/system
@@ -54,10 +54,29 @@ unservice:
 	-systemctl disable sermonit.service
 	-rm -f /etc/systemd/system/sermonit.service
 
-hash-create:
-	-rm sermonit.shasum sermonit.md5sum
-	-find . -type f | grep -v 'git' | xargs -I'{}' shasum '{}' | tee sermonit.shasum
-	-find . -type f | grep -v 'git' | xargs -I'{}' md5sum '{}' | tee sermonit.md5sum
+debian-build: compile mods
+	-mkdir -p debian/usr/share/sermonit
+	-mkdir -p debian/DEBIAN
+	-cp control debian/DEBIAN
+	-cp index.html debian/usr/share/sermonit
+	-cp sermonit.bin /debianusr/bin/sermonit
+	-cp sermonit debian/usr/share/sermonit
+	-cp sermonit.sh debian/usr/share/sermonit
+	-cp -r static debian/usr/share/sermonit
+	-cp -r config debian/usr/share/sermonit
+	-mkdir -p debian/usr/share/sermonit/modules
+	-cp -r modules/applicationversion debian/usr/share/sermonit/modules
+	-cp modules/*.sh debian/usr/share/sermonit/modules
+	-cp modules/*.o debian/usr/share/sermonit/modules
+	-dpkg-deb --build debian sermonit.deb
+
+debian-clean:
+	-rm -r debian
+	-rm sermonit.deb
+
+hash-create: debian-clean
+	-find . -type f | grep -v 'sum$$' | grep -v 'git' | xargs -I'{}' shasum '{}' | tee sermonit.shasum
+	-find . -type f | grep -v 'sum$$' | grep -v 'git' | xargs -I'{}' md5sum '{}' | tee sermonit.md5sum
 
 hash-check:
 	-shasum -c sermonit.shasum
