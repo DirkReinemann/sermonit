@@ -1,0 +1,5 @@
+Package: sermonit
+Version: 1.0
+Architecture: all
+Maintainer: Dirk Reinemann <dirk.reinemann@gmx.de>
+Description: Simple Server Monitoring
