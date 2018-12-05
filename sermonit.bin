@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /usr/share/sermonit
-./sermonit
+./sermonit >sermonit.log 2>sermonit.err

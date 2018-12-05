@@ -1,7 +1,6 @@
 c240311c5c975f5e4ba7b7658ed7dea1  ./sermonit.c
 45b7576660ced1e6ded8d6d2c1fe1003  ./control
-98d85cb66111b81be01665ad39a7c97e  ./docker-cmd.sh
-cb64717344e67babc00600f68216654d  ./sermonit.bin
+b87e22341abcd3abc6bad9e4adf6564f  ./sermonit.bin
 02e4d3a6ef260c51ecabc2eab56ec615  ./Vagrantfile
 ab8d3d88042aba9b85ba6ce30926bb43  ./config/config.json
 1d6ca118bb5f11fb67dba57b65acf62e  ./config/modules/applicationversion.json
@@ -20,8 +19,9 @@ e18bbf611f2a2e43afc071aa2f4e1512  ./static/fonts/glyphicons-halflings-regular.tt
 f4769f9bdb7466be65088239c12046d1  ./static/fonts/glyphicons-halflings-regular.eot
 56ede620c2b2a7f2e64dbd58fa9d51db  ./static/img/favicon.png
 c71b7aab700c76241a400af428a5d28e  ./static/img/loading.svg
-b33cb71328bfa9ddaffbaab90a0dc51d  ./Dockerfile
+81838eb7efd404c363bd7654685dd688  ./Dockerfile
 1cdd987427efbe6ccdff712d30b6438a  ./mongoose.c
+22b735409165494e69d8189730470f27  ./dummyrequest.sh
 95a0210c2645f44d1d489e176eefc70b  ./sermonit
 a1f7be812a0048a634ca6f7d52b6ec00  ./LICENSE
 5e7c87ef769b600b0fc2665ab17567be  ./sermonit.service
@@ -61,4 +61,5 @@ b84ca7449bce6a40745cded498f59b94  ./modules/memorystats.sh
 444d622d9fc238e004aad9f45f6b8e0f  ./mongoose.h
 e9eef42de05f00d4388d12eb40f2557d  ./README.md
 bc87681428b15fa388a2b375d729149d  ./Makefile
+1611109a95b540b6635f297ea4e4d2cc  ./dockercommand.sh
 4e300b6e2927744818763b5cd85190d3  ./index.html
