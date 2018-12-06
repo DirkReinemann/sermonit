@@ -59,7 +59,7 @@ dd351de133a0c12e843355decf2ca1a9  ./modules/memoryinfo.sh
 3f42f31eec091006b2426093beef9213  ./modules/Makefile
 b84ca7449bce6a40745cded498f59b94  ./modules/memorystats.sh
 54817c7d43016ae50fb865251d63795d  ./mongoose.h
-0478c37d252ade437ffa8b26f38a7f9e  ./README.md
+c83b23938ab8194950a494f20fea190d  ./README.md
 cf23b559daab39988c5ebf67e0c98940  ./Makefile
 1611109a95b540b6635f297ea4e4d2cc  ./dockercommand.sh
 4e300b6e2927744818763b5cd85190d3  ./index.html
