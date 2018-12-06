@@ -4,7 +4,7 @@
 
 #include "mongoose.h"
 
-static const char *port = "127.0.0.1:8000";
+static const char *port = "0.0.0.0:8000";
 static const char *modulesdir = "modules";
 static const int threads = 5;
 static sig_atomic_t received_signal = 0;

@@ -5,10 +5,10 @@
 set -e
 set -o pipefail
 
-workdir=$(pwd)
+workdir="$(pwd)"
 
 if [[ $workdir == *modules ]]; then
-    workdir=${workdir%/*}
+    workdir="${workdir%/*}"
 fi
 
 if [ -d "/usr/share/watchit" ]; then

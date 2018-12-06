@@ -2,3 +2,5 @@
 sermonit
 *.zip
 .vagrant
+debian
+*.deb

@@ -15,6 +15,14 @@
 | make uninstall | removes sermonit files from /usr/share/sermonit and /usr/bin |
 | make service | creates a systemd service and system user and group |
 | make unservice | removes systemd service and system user and group |
+| docker-build | build docker image |
+| docker-run | start docker container |
+| docker-stop | stop running docker container |
+| docker-ssh | ssh into running docker container |
+| debian-build | create debian package |
+| debian-clean | remove debian package files |
+| hash-create | create sha and md5 hashsum files |
+| hash-check | check sha and md5 hashsum files |
 
 ### sermonit.sh
 
@@ -132,7 +140,18 @@ vagrant up
 
 The port 8000 is forwarded to localhost. Open your browser and type http://localhost:8000.
 
+## docker
+
+You can create a docker image and start a docker container to test the application.
+
+```bash
+make docker-build
+make docker-run
+```
+
+The port 8000 is exposed and the ip address of the container shown when executing *****make docker-run**.
+
 ## configuration
 
-  * You can change the default port **8000** in the **sermonit.c** file.
+  * You can change the default ip ********0.0.0.0** and port **8000** in the **sermonit.c** file.
   * You can configure the modules and pages in the **config/config.json**.
