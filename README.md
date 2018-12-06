@@ -149,9 +149,9 @@ make docker-build
 make docker-run
 ```
 
-The port 8000 is exposed and the ip address of the container shown when executing ****make docker-run*.
+The port 8000 is exposed and the ip address of the container shown when executing **make docker-run**.
 
 ## configuration
 
-  * You can change the default ip *******0.0.0.0* and port *8000* in the *sermonit.c* file.
+  * You can change the default ip **0.0.0.0** and port **8000** in the **sermonit.c** file.
   * You can configure the modules and pages in the **config/config.json**.
